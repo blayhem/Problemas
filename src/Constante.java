@@ -8,7 +8,7 @@ public class Constante {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int casos = sc.nextInt();
-        int number=0;int asc=0;int desc=0;int operations=0; //número a operar, ordenado asc, ordenado desc, operaciones hasta 6174
+        int number,asc,desc,operations; //número a operar, ordenado asc, ordenado desc, operaciones hasta 6174
         Stack<Integer> stack = new Stack<>();               //stack para descomponer el número en dígitos
         int repdigit=0;
         int[] ascend = new int[4];                          //array de dígitos ordenada ascendente
@@ -36,7 +36,7 @@ public class Constante {
                 number = asc - desc;
                 operations++;
                 for (int n = 0; n < 3; n++) {if(descend[n]==descend[n+1])repdigit++;}
-                if (repdigit==3){operations=8;number=6174;}
+                if (repdigit==3){operations=8;number=6174;}     //optimizar para no incluir todas las operaciones anteriores
             }
             operIndex[i]=operations;
         }
