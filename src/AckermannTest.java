@@ -3,7 +3,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AckermannTest {
 
-    private Solution soln = new Solution();
+    private Ackermann soln = new Ackermann();
 
     @Test
     public void shouldWork() {

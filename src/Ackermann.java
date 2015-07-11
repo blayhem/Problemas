@@ -1,7 +1,7 @@
 /**
  * Created by blayhem on 10/07/15.
  */
-public class Solution {
+public class Ackermann {
     public int Ackermann(int m, int n){
         if(m<0 || n<0) return 0;
         if(m==0) return n+1;
