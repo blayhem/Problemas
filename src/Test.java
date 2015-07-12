@@ -6,21 +6,24 @@ import java.util.Stack;
  */
 public class Test {
     public static void main(String[] args) {
-        String song = "RWUBWUBWUBLWUB";
+        String s;
+        char[] m = {'1','2','3','4','5','6','7','8','9','a','b','c','d','e'};
+        int j = 0;
+        String[] splitted = new String[5];
 
-        char[] original = song.toCharArray();
-        String decoded = "";
-        for (int i = 0; i < original.length; i++) {
-            if(original[i] == 'W' && original[i+1] == 'U' && original[i+2] == 'B'){
-                decoded += ' ';
-                i += 2;
+        for (int i = 0; i < 4; i++) {
+            s = "";
+            j=0;
+            while (j < m.length / 4) {
+                s += m[j+(i*(m.length/4))];
+                j++;
             }
-            else decoded += original[i];
-        }
-        //removing unnecessary spaces
-        while(decoded.contains("  ")){decoded = decoded.replace("  "," ");}
-        if(decoded.charAt(0) == ' '){decoded = decoded.substring(1);}
-        if(decoded.charAt(decoded.length()-1) == ' '){decoded = decoded.substring(0, decoded.length()-1);}
-        System.out.println(decoded);
+            splitted[i] = s;
+        } s="";
+
+        for (int i = (m.length/4)*4; i < m.length; i++) s+= m[i];
+        splitted[4] = s;
+
+        System.out.println(Arrays.asList(splitted));
     }
 }
