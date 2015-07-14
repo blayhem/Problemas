@@ -14,12 +14,12 @@ public class CaesarCipher {
             if (header > 64 && header < 91) { //mays
                 header = header + shift;
                 if (header < 65) while (header < 65) header += 26;
-                else while (header > 90) header -=  26;
+                else while (header > 90) header -= 26;
                 m[i] = (char) header;
             } else if (header > 96 && header < 123) {   //minus
                 header = header + shift;
                 if (header < 97) while (header < 97) header += 26;
-                else while (header > 122) header -=  26;
+                else while (header > 122) header -= 26;
                 m[i] = (char) header;
             }
             shift++;
@@ -28,29 +28,18 @@ public class CaesarCipher {
         int j;
         String[] splitted = new String[5];
 
-        if(m.length == 66){
-            for (int i = 0; i < 4; i++) {
-                s = "";j=0;
-                while (j < 14) {s += m[j+(i*14)];j++;}
-                splitted[i] = s;
-            } s="";
-            for (int i = 14*4; i < m.length; i++) s+= m[i];
-            splitted[4] = s;
+        for (int i = 0; i < 4; i++) {
+            s = "";
+            j = 0;
+            while (j < m.length / 4) {
+                s += m[j + (i * (m.length / 4))];
+                j++;
+            }
+            splitted[i] = s;
         }
-        else{
-            for (int i = 0; i < 4; i++) {
-                s = "";
-                j=0;
-                while (j < m.length / 4) {
-                    s += m[j+(i*(m.length/4))];
-                    j++;
-                }
-                splitted[i] = s;
-            } s="";
-            for (int i = (m.length/4)*4; i < m.length; i++) s+= m[i];
-            splitted[4] = s;
-        }
-
+        s = "";
+        for (int i = (m.length / 4) * 4; i < m.length; i++) s += m[i];
+        splitted[4] = s;
         return Arrays.asList(splitted);
     }
 
@@ -66,12 +55,12 @@ public class CaesarCipher {
             if (header > 64 && header < 91) { //mays
                 header = header - shift;
                 if (header < 65) while (header < 65) header += 26;
-                else while (header > 90) header -=  26;
+                else while (header > 90) header -= 26;
                 m[i] = (char) header;
             } else if (header > 96 && header < 123) {   //minus
                 header = header - shift;
                 if (header < 97) while (header < 97) header += 26;
-                else while (header > 122) header -=  26;
+                else while (header > 122) header -= 26;
                 m[i] = (char) header;
             }
             shift++;
@@ -80,5 +69,4 @@ public class CaesarCipher {
         for (char l : m) message += l;
         return message;
     }
-
 }
